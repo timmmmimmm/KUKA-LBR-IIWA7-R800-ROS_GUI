@@ -1,10 +1,6 @@
 #include "worker_thread.h"
 
-WorkerThread::WorkerThread(QObject *parent)
-  : QThread{parent}
-{
-
-}
+WorkerThread::WorkerThread(QObject *parent) : QThread{parent}{}
 
 WorkerThread::WorkerThread(QObject *parent, std::function<bool ()> callable)
   : WorkerThread(parent)
@@ -21,10 +17,10 @@ void WorkerThread::run(){
       emit finished(false);
       return;
     }
-
-    working = false;
-    emit finished(true);
   }
+
+  working = false;
+  emit finished(true);
 }
 
 bool WorkerThread::isWorking()

@@ -47,6 +47,8 @@ set(ROS_DEPENDS
   iiwa_msgs
   iiwa_ros
   angles
+  tf
+  tf_conversions
   )
 
 set(EXTERNAL_DEPENDS
@@ -93,6 +95,7 @@ find_package(catkin REQUIRED COMPONENTS ${ROS_DEPENDS})
 catkin_package(
   INCLUDE_DIRS
     include
+    include/iiwa_gui
   LIBRARIES
     ${PROJECT_NAME}
   CATKIN_DEPENDS

@@ -1,0 +1,4 @@
+<launch>
+    <node name="process_caller" pkg="iiwa_gui" type="process_caller_node" />
+    <node name="GUI" pkg="iiwa_gui" type="main_node" />
+</launch>

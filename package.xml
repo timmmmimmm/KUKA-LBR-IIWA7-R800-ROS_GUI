@@ -52,6 +52,8 @@
   <depend>iiwa_msgs</depend>
   <depend>iiwa_ros</depend>
   <depend>angles</depend>
+  <depend>tf</depend>
+  <depend>tf_conversions</depend>
 
 
 

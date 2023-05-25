@@ -18,7 +18,7 @@ signals:
   void finished(bool returnState);
 
 private:
-  std::function<bool()> callable;
-  bool working;
+  std::function<bool()> callable = nullptr;
+  bool working = false;
 };
 
