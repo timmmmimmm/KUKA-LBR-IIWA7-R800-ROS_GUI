@@ -165,16 +165,6 @@ void CartesianPositionUi::on_setPosButton_clicked()
     msg.pose.orientation.z = quat.z() * -1;
     msg.pose.orientation.w = quat.w() * -1;
 
-    ROS_ERROR_STREAM("\nPOS:\n" <<
-                     "X: " << msg.pose.position.x << "\n" <<
-                     "Y: " << msg.pose.position.y << "\n" <<
-                     "Z: " << msg.pose.position.z << "\n" <<
-                     "\nROT:\n" <<
-                     "X: " << msg.pose.orientation.x << "\n" <<
-                     "Y: " << msg.pose.orientation.y << "\n" <<
-                     "Z: " << msg.pose.orientation.z << "\n" <<
-                     "W: " << msg.pose.orientation.w << "\n");
-
     publisher_cartesian_pose_.setPose(msg);
   }
 }
