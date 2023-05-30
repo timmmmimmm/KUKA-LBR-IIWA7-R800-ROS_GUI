@@ -12,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
 
+  ui->stateSelector->setItemIcon(0, QIcon(":/icons/pCircle.svg"));
+  ui->stateSelector->setItemIcon(1, QIcon(":/icons/oCircle.svg"));
+  ui->stateSelector->setItemIcon(2, QIcon(":/icons/cCircle.svg"));
+
   spinner = new QTimer(this);
   connect(spinner,SIGNAL(timeout()),this,SLOT(spinNode()));
   spinner->start(1);
@@ -49,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   //robot status setup
   //if the icon doesnt show up, change the path to ~/iiwa_stack_ws/src/iiwa_gui/rc/<icon_name>
-  QIcon icon = QIcon("/run/user/1000/doc/d666df8e/cCircle.svg");
+  QIcon icon = QIcon(":/icons/cCircle.svg");
   ui->label_icon->setPixmap(icon.pixmap(QSize(16,16)));
   ui->label_online->setText(QString("Offline"));
 
@@ -156,7 +160,7 @@ MainWindow::~MainWindow()
 void MainWindow::checkIfOnline()
 {
   if(!isRobotOnline){
-    auto icon = std::make_shared<QIcon>("/run/user/1000/doc/d10395e9/gazeboIcon.svg");
+    auto icon = std::make_shared<QIcon>(":/icons/gazeboIcon.svg");
 
     createUniversalPopup("Launch Gazebo?",
                          "IIWA is not connected yet.\nWould you like to start a simulation?",
@@ -207,7 +211,7 @@ void MainWindow::rvizOperational(bool status)
     ui->actionCloseRviz->setEnabled(true);
     ui->actionCloseRviz->setVisible(true);
 
-    ui->menuRviz->setIcon(QIcon("/run/user/1000/doc/c5ae8b17/gCircle.svg"));
+    ui->menuRviz->setIcon(QIcon(":/icons/gCircle.svg"));
 
     moveitManager = new MoveitManager(gazeboOnline);
     jointPositionUi->setMoveitManager(moveitManager);
@@ -250,7 +254,7 @@ void MainWindow::gazeboOperational(bool status)
     ui->actionCloseGazebo->setEnabled(true);
     ui->actionCloseGazebo->setVisible(true);
 
-    ui->menuGazebo->setIcon(QIcon("/run/user/1000/doc/c5ae8b17/gCircle.svg"));
+    ui->menuGazebo->setIcon(QIcon(":/icons/gCircle.svg"));
     return;
   }
 
@@ -299,7 +303,7 @@ void MainWindow::cartesianPositionUiCreated(bool status)
 //ROS robot online callback
 void MainWindow::callbackOnline(const std_msgs::Bool &isOnline){
   if(!this->isRobotOnline && isOnline.data){
-    QIcon icon = QIcon("/run/user/1000/doc/c5ae8b17/gCircle.svg");
+    QIcon icon = QIcon(":/icons/gCircle.svg");
     ui->label_icon->setPixmap(icon.pixmap(QSize(16,16)));
     ui->label_online->setText(QString("Online"));
 
@@ -307,7 +311,7 @@ void MainWindow::callbackOnline(const std_msgs::Bool &isOnline){
   }
 
   else if(!isOnline.data && this->isRobotOnline){
-    QIcon icon = QIcon("/run/user/1000/doc/d666df8e/cCircle.svg");
+    QIcon icon = QIcon(":/icons/cCircle.svg");
     ui->label_icon->setPixmap(icon.pixmap(QSize(16,16)));
     ui->label_online->setText(QString("Offline"));
   }
@@ -421,7 +425,7 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 
   if(index == 1){
     if(!rvizOnline){
-      auto icon = std::make_shared<QIcon>("/run/user/1000/doc/41f818c4/rvizIcon.png");
+      auto icon = std::make_shared<QIcon>(":/icons/rvizIcon.png");
       createUniversalPopup("Open Rviz",
                            "Cartesian coordinates might be confusing, please use Rviz so you can better understand what you are doing.",
                            "Launch Rviz",

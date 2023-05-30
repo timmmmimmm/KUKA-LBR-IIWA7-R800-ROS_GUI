@@ -172,27 +172,15 @@
           <property name="text">
            <string>Cartesian Wrench</string>
           </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../../../../../../../run/user/1000/doc/9c8f169f/pCircle.svg</normaloff>../../../../../../../run/user/1000/doc/9c8f169f/pCircle.svg</iconset>
-          </property>
          </item>
          <item>
           <property name="text">
            <string>Joint Torque</string>
           </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../../../../../../../run/user/1000/doc/5dd2a856/oCircle.svg</normaloff>../../../../../../../run/user/1000/doc/5dd2a856/oCircle.svg</iconset>
-          </property>
          </item>
          <item>
           <property name="text">
            <string>Joint Velocity</string>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../../../../../../../run/user/1000/doc/d666df8e/cCircle.svg</normaloff>../../../../../../../run/user/1000/doc/d666df8e/cCircle.svg</iconset>
           </property>
          </item>
         </widget>

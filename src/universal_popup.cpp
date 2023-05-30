@@ -10,7 +10,7 @@ UniversalPopup::UniversalPopup(QWidget *parent, SimController* simController) :
   ui->setupUi(this);
   this->setAttribute(Qt::WA_DeleteOnClose);
 
-  loadingIcon = new QMovie("/run/user/1000/doc/16eb4fe1/circle.gif");
+  loadingIcon = new QMovie(":/gif/circle.gif");
   loadingIcon->setScaledSize(QSize(80,80));
   connect(loadingIcon,SIGNAL(finished()),this,SLOT(movieFinished()));
   loadingIcon->start();

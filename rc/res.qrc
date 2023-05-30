@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+    <file>icons/cCircle.svg</file>
+    <file>icons/gazeboIcon.svg</file>
+    <file>icons/gCircle.svg</file>
+    <file>icons/grCircle.svg</file>
+    <file>icons/oCircle.svg</file>
+    <file>icons/pCircle.svg</file>
+    <file>icons/ppCircle.svg</file>
+    <file>icons/rvizIcon.png</file>
+    <file>gif/circle.gif</file>
+    </qresource>
+</RCC>

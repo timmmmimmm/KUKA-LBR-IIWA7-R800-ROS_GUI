@@ -137,7 +137,7 @@ file(GLOB NODES
 ### QT stuff (required if you want a GUI)
 ###
 set(CMAKE_AUTOMOC ON)  #This will autogenerate qt gui stuff
-set(CMAKE_AUTORCC ON)  #this needs to be on so cmake will know what to do with QT resource Files
+#set(CMAKE_AUTORCC ON)  #this needs to be on so cmake will know what to do with QT resource Files
 
 #find_package(Qt5Widgets)
 #find_package(Qt5PrintSupport)
@@ -161,8 +161,9 @@ endforeach(source)
 
 # find all resource files
 file(GLOB QRC
-    "rc/*.qrc"
+    "rc/res.qrc"
 )
+qt5_add_resources (BRUH ${QRC})
 
 ###
 ### compile
@@ -175,7 +176,7 @@ foreach(NODE_FILE ${NODES})
   get_filename_component(NODE_NAME ${NODE_FILE} NAME_WE)
   message("  - " ${NODE_NAME})
 
-  add_executable(${NODE_NAME} ${NODE_FILE} ${HDRS} ${SRCS} ${UI} ${QRC})
+  add_executable(${NODE_NAME} ${NODE_FILE} ${HDRS} ${SRCS} ${UI} ${BRUH})# ${QRC})
   add_dependencies(${NODE_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
   target_link_libraries (${NODE_NAME} ${catkin_LIBRARIES} ${PROJECT_NAME} ${EXTERNAL_DEPENDS_LIB})
   target_include_directories(${NODE_NAME} PRIVATE "include/${PROJECT_NAME}/")
