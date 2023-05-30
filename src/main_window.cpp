@@ -41,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
   connect(jointPositionUi,SIGNAL(jointPositionUIExists(bool)),this,SLOT(jointPositionUICreated(bool)));
   connect(cartesianPositionUi,SIGNAL(cartesianPositionUIExists(bool)),this,SLOT(cartesianPositionUiCreated(bool)));
+  connect(cartesianPositionUi,SIGNAL(setHome()), this, SLOT(setHomeRequested()));
+
 
   subscriber_robot_online = node_handle_.subscribe("/iiwa/online",
                                                    1,
@@ -266,6 +268,11 @@ void MainWindow::gazeboOperational(bool status)
 
   ui->menuGazebo->setIcon(QIcon());
 
+}
+
+void MainWindow::setHomeRequested()
+{
+  emit setHome();
 }
 
 
@@ -507,7 +514,6 @@ void MainWindow::on_actionRvizNo_Sim_triggered()
 }
 void MainWindow::on_actionCloseRviz_triggered()
 {
-
   createLoadingPopup("Closing all simulation and visualisation software",
                      "Please be patient.",
                      std::bind(&SimController::stopSims, simController));

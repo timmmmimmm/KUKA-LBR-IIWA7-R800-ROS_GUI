@@ -51,6 +51,7 @@ signals:
   void robotStatus(bool isOnline);
   void rvizStatus(bool isOnline);
   void gazeboStatus(bool isOnline);
+  void setHome();
 
 public slots:
   void spinNode();
@@ -59,6 +60,7 @@ public slots:
   void cartesianPositionUiCreated(bool status);
   void rvizOperational(bool);
   void gazeboOperational(bool);
+  void setHomeRequested();
 
 private slots:
   void on_comboBox_currentIndexChanged(int index);

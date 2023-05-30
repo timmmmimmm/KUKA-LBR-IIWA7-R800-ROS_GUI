@@ -136,6 +136,8 @@ void CartesianPositionUi::on_homePosButton_clicked()
     }
   }
 
+  emit setHome();
+
 }
 
 

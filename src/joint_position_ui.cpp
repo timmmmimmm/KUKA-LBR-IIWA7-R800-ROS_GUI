@@ -47,6 +47,7 @@ JointPositionUI::JointPositionUI(QWidget *parent) :
 
   connect(parent,SIGNAL(robotStatus(bool)),this,SLOT(robotState(bool)));
   connect(parent,SIGNAL(rvizStatus(bool)),this,SLOT(rvizState(bool)));
+  connect(parent,SIGNAL(setHome()),this,SLOT(setHomeRequest()));
 }
 
 
