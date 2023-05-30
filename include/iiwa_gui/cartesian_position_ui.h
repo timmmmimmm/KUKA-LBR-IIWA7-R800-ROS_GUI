@@ -40,6 +40,7 @@ public:
 
 signals:
   void cartesianPositionUIExists(bool status);
+  void setHome();
 
 public slots:
   void robotState(bool isOnline);

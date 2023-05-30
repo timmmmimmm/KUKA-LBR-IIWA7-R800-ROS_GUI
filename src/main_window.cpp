@@ -138,6 +138,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
   delete jointPositionUi;
+  delete cartesianPositionUi;
   delete simController;
   delete ui;
   delete spinner;

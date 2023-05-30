@@ -54,6 +54,7 @@ signals:
 public slots:
   void robotState(bool isOnline);
   void rvizState(bool isOnline);
+  void setHomeRequest();
 
 private slots:
 

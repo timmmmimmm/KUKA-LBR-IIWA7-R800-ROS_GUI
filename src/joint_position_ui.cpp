@@ -38,6 +38,11 @@ JointPositionUI::JointPositionUI(QWidget *parent) :
   sliders_joint_angles[5] = ui->slider_A6;
   sliders_joint_angles[6] = ui->slider_A7;
 
+  for(int_fast8_t i = 0; i < 7; ++i){
+    sliders_joint_angles[i] -> setToolTip(QString::fromStdString(
+                                            std::string(std::to_string(0) + " ˚")));
+  }
+
 
 
   connect(parent,SIGNAL(robotStatus(bool)),this,SLOT(robotState(bool)));
@@ -103,6 +108,11 @@ void JointPositionUI::rvizState(bool isOnline)
   rvizOnline = isOnline;
 }
 
+void JointPositionUI::setHomeRequest()
+{
+  on_homePosButton_clicked();
+}
+
 
 
 
@@ -136,7 +146,7 @@ void JointPositionUI::on_slider_A1_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[0];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -148,7 +158,7 @@ void JointPositionUI::on_slider_A2_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[1];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str() + " ˚"),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -160,7 +170,7 @@ void JointPositionUI::on_slider_A3_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[2];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -172,7 +182,7 @@ void JointPositionUI::on_slider_A4_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[3];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -184,7 +194,7 @@ void JointPositionUI::on_slider_A5_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[4];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -196,7 +206,7 @@ void JointPositionUI::on_slider_A6_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[5];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -208,7 +218,7 @@ void JointPositionUI::on_slider_A7_sliderMoved(int position)
 
   ss_tool_tip_ << joint_angles[6];
 
-  QToolTip::showText(QCursor::pos(),QString::fromStdString(ss_tool_tip_.str()),this);
+  QToolTip::showText(QCursor::pos(),QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")),this);
   ss_tool_tip_.str(std::string());
 }
 
@@ -244,7 +254,7 @@ void JointPositionUI::on_slider_A7_sliderMoved(int position)
 void JointPositionUI::on_slider_A1_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[0];
-  ui->slider_A1->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A1->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -253,7 +263,7 @@ void JointPositionUI::on_slider_A1_sliderReleased()
 void JointPositionUI::on_slider_A2_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[1];
-  ui->slider_A2->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A2->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -262,7 +272,7 @@ void JointPositionUI::on_slider_A2_sliderReleased()
 void JointPositionUI::on_slider_A3_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[2];
-  ui->slider_A3->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A3->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -271,7 +281,7 @@ void JointPositionUI::on_slider_A3_sliderReleased()
 void JointPositionUI::on_slider_A4_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[3];
-  ui->slider_A4->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A4->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -280,7 +290,7 @@ void JointPositionUI::on_slider_A4_sliderReleased()
 void JointPositionUI::on_slider_A5_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[4];
-  ui->slider_A5->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A5->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -289,7 +299,7 @@ void JointPositionUI::on_slider_A5_sliderReleased()
 void JointPositionUI::on_slider_A6_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[5];
-  ui->slider_A6->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A6->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -298,7 +308,7 @@ void JointPositionUI::on_slider_A6_sliderReleased()
 void JointPositionUI::on_slider_A7_sliderReleased()
 {
   ss_tool_tip_ << joint_angles[6];
-  ui->slider_A7->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+  ui->slider_A7->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
   ss_tool_tip_.str(std::string());
   planPosition();
 }
@@ -331,7 +341,7 @@ void JointPositionUI::on_homePosButton_clicked()
   for (size_t i = 0; i < joint_angles.size(); ++i) {
     joint_angles[i] = 0;
     sliders_joint_angles[i]->setValue(0);
-    sliders_joint_angles[i]->setToolTip(QString::fromStdString(std::to_string(0)));
+    sliders_joint_angles[i]->setToolTip(QString::fromStdString(std::string(std::to_string(0) + " ˚")));
   }
   if(rvizOnline)
     moveitManager->planMovementJointPosition(joint_angles);
@@ -359,7 +369,7 @@ void JointPositionUI::callbackJointState(const iiwa_msgs::JointPosition &joint_p
     joint_angles[6] = std::round(angles::to_degrees(joint_position_.position.a7));
 
     for (size_t i = 0; i < sliders_joint_angles.size(); ++i) {
-      sliders_joint_angles[i]->setToolTip(QString::fromStdString(std::to_string(joint_angles[i])));
+      sliders_joint_angles[i]->setToolTip(QString::fromStdString(std::string(std::to_string(joint_angles[i]) + " ˚")));
       sliders_joint_angles[i]->setValue(joint_angles[i] * 10);
     }
 
@@ -452,7 +462,7 @@ void JointPositionUI::syncPosition(const sensor_msgs::JointState &joint_state_)
       sliders_joint_angles[i]->setValue(std::round(joint_angles[i] * 10));
 
       ss_tool_tip_ << joint_angles[i];
-      sliders_joint_angles[i]->setToolTip(QString::fromStdString(ss_tool_tip_.str()));
+      sliders_joint_angles[i]->setToolTip(QString::fromStdString(std::string(ss_tool_tip_.str() + " ˚")));
       ss_tool_tip_.str(std::string());
     }
 

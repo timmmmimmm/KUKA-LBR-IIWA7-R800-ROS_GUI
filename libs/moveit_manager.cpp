@@ -31,6 +31,8 @@ MoveitManager::MoveitManager(bool gazeboOnline)
 MoveitManager::~MoveitManager()
 {
   moveit_group_interface->stop();
+  moveit_group_interface->clearPoseTargets();
+  callback_queue_.clear();
   spinner->stop();
 }
 
