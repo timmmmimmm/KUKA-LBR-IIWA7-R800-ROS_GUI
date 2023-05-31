@@ -22,3 +22,7 @@ After you've successfully built the workspace, head into **iiwa_stack_ws > src >
 
 ### Sunrise setup
 Since I was too lazy to install a symlink onto the src folder of the Java code, you'll have to head again into **iiwa_stack_ws > src > iiwa_gui > additionalFiles > JavaReplacements** and replace the files in **de.tm.in.camp.kuka.ros** with the files from the **ros** folder. And also replace the files in **de.tum.in.camp.kuk.ros.app** with the files in the **ros.app** folder.
+
+### Network setup
+You're fine to jump ahead and work with RVIZ right out of the box (assuming your **ROS_IP** is set to localhost), but if you want to work with the real robot you need to **setup a new network configuration**
+On your linux machine go to Settings, on the left side of the settings panel choose network. Click the "+" next to wired. You can call it whatever you want but the important bit is to **Head over to IPVv4, choose manual, set the robot address** identical to the one described in iiwa_stack, next **set the Netmask that your Sunrise.OS uses**. After that, save the configuration and always remeber to switch it over when you're working with the robot.
